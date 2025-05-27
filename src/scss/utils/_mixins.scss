@@ -1,0 +1,86 @@
+@use 'sass:map';
+@use 'sass:list';
+
+@use 'variables' as var;
+@use 'functions' as fn;
+
+@mixin mq($bp: sm, $type: min, $is-retina: false) {
+  @if map.has-key(var.$breakpoints, $bp) {
+    $width: map.get(var.$breakpoints, $bp);
+
+    @if $type == max {
+      $width: $width - 0.02px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @if $is-retina {
+        @media (min-device-pixel-ratio: 2),
+          (min-resolution: 192dpi),
+          (min-resolution: 2dppx) {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  }
+  else {
+    @error 'No value could be retrieved from `#{$bp}`. '
+      + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+} //* Mixin for media queries. Checking for the valid breakpoint name, checking for mininal or maximal width. If maximal, subtracting 0.02px to prevent overlapping (switching to the next breakpoint). Also checking for retina displays. If the breakpoint is not found in the map, an error will be thrown.
+
+@mixin frame($width, $height: $width, $is-circle: false) {
+  width: $width;
+  height: $height;
+
+  @if $is-circle {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  img {
+    object-fit: cover;
+    object-position: top center;
+  }
+} //* Mixin for frame with image (squared by default). Checking for circle shape to add specific border-radius.
+
+@mixin scroll-bar {
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 100px;
+
+    &:hover {
+      background-color: rgba($ffffff, 0, 3);
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: fn.get-color('light-secondary');
+    background-clip: content-box;
+    border: 5px solid transparent;
+    border-radius: 100px;
+
+    &:hover {
+      background-color: fn.get-color('accent-primary');
+    }
+  }
+} //* Mixin for custom scrollbar
+
+@mixin ease($ease, $properties...) {
+  @if map.has-key(var.$easings, $ease) {
+    $ease: map.get(var.$easings, $ease);
+
+    transition: $ease;
+  } @else {
+      @warn 'The variable $ease is not defined'
+  }
+
+  @if list.length($properties) > 0 {
+    transition-property: $properties;
+  }
+} //* Mixin for animations. Accept speed of animation and properties, which will be gathered to the list and can be applied to the element.
