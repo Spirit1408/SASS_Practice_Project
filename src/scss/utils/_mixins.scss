@@ -23,8 +23,7 @@
         @content;
       }
     }
-  }
-  else {
+  } @else {
     @error 'No value could be retrieved from `#{$bp}`. '
       + 'Please make sure it is defined in `$breakpoints` map.';
   }
@@ -77,7 +76,7 @@
 
     transition: $ease;
   } @else {
-      @warn 'The variable $ease is not defined'
+    @warn 'The variable $ease is not defined';
   }
 
   @if list.length($properties) > 0 {
