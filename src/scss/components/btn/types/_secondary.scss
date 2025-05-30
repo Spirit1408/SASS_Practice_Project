@@ -1,0 +1,20 @@
+//* Styles for specific type of button (secondary, in this case)
+
+@if index($btn-types, secondary) {
+  .btn--secondary {
+    &:active {
+      color: #d14a00;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        color: #f15c27;
+      }
+    } //* Checking if hover functionality supports by browser
+
+    &[disabled] {
+      color: #b5b5be;
+    } //* if button disabled (by HTML attribute)
+  }
+} //* Checking an existense of value primary in the map (not -1 -> true)

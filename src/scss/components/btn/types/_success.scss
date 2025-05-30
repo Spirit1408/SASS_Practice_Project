@@ -1,0 +1,22 @@
+//* Styles for specific type of button (success, in this case)
+
+@if index($btn-types, success) {
+  .btn--success {
+    background-color: #b2c43c;
+
+    &:active {
+      background-color: darken(#b2c43c, 10%);
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        background-color: lighten(#b2c43c, 10%);
+      }
+    } //* Checking if hover functionality supports by browser
+
+    &[disabled] {
+      background-color: #b5b5be;
+    } //* if button disabled (by HTML attribute)
+  }
+} //* Checking an existense of value primary in the map (not -1 -> true)

@@ -1,0 +1,22 @@
+//* Styles for specific type of button (frame, in this case)
+
+@if index($btn-types, frame) {
+  .btn--frame {
+    border-color: #f07f2e;
+
+    &:active {
+      border-color: #d14a00;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        border-color: #f15c27;
+      }
+    } //* Checking if hover functionality supports by browser
+
+    &[disabled] {
+      background-color: rgba(#b5b5be, 0.5);
+    } //* if button disabled (by HTML attribute)
+  }
+} //* Checking an existense of value primary in the map (not -1 -> true)

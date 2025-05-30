@@ -1,0 +1,23 @@
+//* Styles for specific type of button (primary, in this case)
+
+@if index($btn-types, primary) {
+  .btn--primary {
+    background-color: #f07f2e;
+
+    &:active {
+      background-color: #d14a00;
+    }
+
+    @media (hover: hover) {
+      &:hover,
+      &:focus {
+        background-color: #f15c27;
+        box-shadow: 0px 4px 10px 0px rgba(240, 127, 46, 0.25);
+      }
+    } //* Checking if hover functionality supports by browser
+
+    &[disabled] {
+      background-color: #b5b5be;
+    } //* if button disabled (by HTML attribute)
+  }
+} //* Checking an existense of value primary in the map (not -1 -> true)
