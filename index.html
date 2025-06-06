@@ -646,7 +646,7 @@
             </div>
             <div class="board-right">
               <p class="board-tag">Reminder</p>
-              <p class="badge warning">Completed</p>
+              <p class="badge-success">Completed</p>
             </div>
           </li>
           <li class="board-item">
@@ -669,7 +669,7 @@
             </div>
             <div class="board-right">
               <p class="board-tag">Call</p>
-              <p class="badge error">Ended</p>
+              <p class="badge-warning">Ended</p>
             </div>
           </li>
           <li class="board-item hide">
@@ -679,8 +679,9 @@
                 Due date: <time>December 23, 2023</time>
               </p>
               <div class="board-coworker person">
-                <div class="person-avatar">
+                <div class="person-thumb">
                   <img
+                    class="person-avatar"
                     src="./src/img/avatars/avatar-1.jpg"
                     alt="George Fields"
                     width="42"
@@ -691,11 +692,13 @@
             </div>
             <div class="board-right">
               <p class="board-tag">Reminder</p>
-              <p class="badge">Completed</p>
+              <p class="badge-danger">Error</p>
             </div>
           </li>
         </ul>
-        <button class="co-workers-btn btn btn--secondary" type="button"><span class="btn-inner">Show more</span></button>
+        <button class="co-workers-btn btn btn--secondary" type="button">
+          <span class="btn-inner">Show more</span>
+        </button>
       </section>
 
       <section class="tasks">

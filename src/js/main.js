@@ -33,3 +33,10 @@ window.matchMedia('(min-width: 1200px)').addEventListener('change', event => {
   refsMenu.openMenuBtn.setAttribute('aria-expanded', false);
   bodyScrollLock.enableBodyScroll(document.body);
 });
+
+document.querySelector('.co-workers-btn').addEventListener('click', () => {
+  document.querySelectorAll('.board-item').forEach(item => {
+    item.classList.remove('hide');
+  });
+  document.querySelector('.co-workers-btn').classList.add('hide');
+});

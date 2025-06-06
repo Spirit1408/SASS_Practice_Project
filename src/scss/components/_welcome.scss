@@ -1,18 +1,37 @@
+@use '../utils/placeholders';
+@use '../utils/variables' as var;
+@use '../utils/functions' as fn;
+@use '../utils/mixins' as mx;
+
 @use 'btn/btn' as btn with (
   $btn-layer-spacing: 4px
 ); //* Can modify default parameters such as gap between icon and text in the primary button (0 by default)
 
 .welcome {
   grid-area: welcome;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  row-gap: 16px;
 }
 
 .page-title {
-}
+  &-accent {
+    @extend %section-title;
 
-.page-title-accent {
+    display: block;
+    margin-bottom: 8px;
+
+    color: fn.get-color('light-primary');
+
+    @include mx.mq('lg') {
+      margin-bottom: 16px;
+    }
+  }
 }
 
 .welcome-btn {
-  display: block;
-  margin: 0 auto;
+  width: fit-content;
 }
